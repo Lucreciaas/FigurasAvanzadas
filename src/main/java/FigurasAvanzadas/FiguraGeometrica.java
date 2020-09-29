@@ -1,6 +1,9 @@
 package FigurasAvanzadas;
 
 // Clase abstracta -> no se puede instanciar
+
+import java.awt.Color;
+
 //                    si puedo heredar de ella
 public abstract class FiguraGeometrica implements Comparable<FiguraGeometrica> {
     private String id;
@@ -9,7 +12,8 @@ public abstract class FiguraGeometrica implements Comparable<FiguraGeometrica> {
     public FiguraGeometrica () {
         posicion = new Posicion();
     }
-
+    
+    
     // Metodo compareTo() -> debe implementarse en las subclases
 
     // Metodos abstractos -> deben implementarse en las subclases

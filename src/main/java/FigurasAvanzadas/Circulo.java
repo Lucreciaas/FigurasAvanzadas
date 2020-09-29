@@ -17,6 +17,16 @@ public class Circulo extends FiguraGeometrica {
      * siendo X el numero de serie correspondiente.
      * Configurarlo con setId() de la superclase.
      */
+    public Circulo (Integer radio, Integer x, Integer y) {
+        super(x, y);
+        setRadio(radio);
+    }
+    public void setId(String id) {
+        this.id =f.id++;
+        
+    }
+    
+    
     public Circulo(Integer diametro) {
         this.radio = diametro;
     }
@@ -48,7 +58,7 @@ public class Circulo extends FiguraGeometrica {
     public void setRadio(Integer radio) {
         if ((0 < radio) && (radio < MAX_RADIO)) {
             this.radio = radio;
-        }
+                }
     }
 
     /**
@@ -60,15 +70,26 @@ public class Circulo extends FiguraGeometrica {
      */
     @Override
     public int compareTo(FiguraGeometrica f) {
-        return 0;
+   
+    if(getSuperficie() > f.getSuperficie()) return 1; 
+    if(getSuperficie() < f.getSuperficie()) return -1;
+    else {
+        return getId().compareTo(f.getId());
+        if (getId() > f.getId()) return 1; 
+        if (getId() < f.getId()) return -1; 
+        else {return 0;
+          }   
     }
+}
+    
 
     /**
      * Genera un numero unico para cada objeto creado.
      * @return El numero de serie a usar.
      */
     private Integer getNroSerie() {
-        return nroSerie;
+        return nroSerie++;
+        
     }
 
     /**
@@ -80,7 +101,7 @@ public class Circulo extends FiguraGeometrica {
      */
     @Override
     public String toString() {
-        return "Circulo\n ++ Radio=" + radio;
+        return "Circulo\n ++ Radio=" + radio.toString();
     }
 
 }

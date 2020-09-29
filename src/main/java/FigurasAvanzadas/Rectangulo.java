@@ -17,9 +17,19 @@ public class Rectangulo extends FiguraGeometrica {
      * siendo X el numero de serie correspondiente.
      * Configurarlo con setId() de la superclase.
      */
-    public Rectangulo(Integer base) {
+    public Rectangulo (Integer base) {
+        this.base=base;
+       // TODO - Implementar el metodo
+    }
+    
+    public Rectangulo(Integer base, Integer altura, Integer x, Integer y) {
+        super x,y;
+        this.base=base;
+        this.altura=altura;
         // TODO - Implementar el metodo
     }
+    
+    
 
     /**
      * Constructor que recibe los valores de la base
@@ -29,17 +39,15 @@ public class Rectangulo extends FiguraGeometrica {
      * siendo X el numero de serie correspondiente.
      * Configurarlo con setId() de la superclase.
      */
-    public Rectangulo(Integer base, Integer altura) {
-        // TODO - Implementar el metodo
-    }
-
+    
     /**
      * Calcula el perimetro de la figura.
      * @return El perimetro.
      */
     public Double getPerimetro () {
+        return base*2 + altura*2;
         // TODO - Implementar el metodo
-        return -1.0;
+       // return -1.0;
     }
 
     /**
@@ -47,8 +55,9 @@ public class Rectangulo extends FiguraGeometrica {
      * @return La superficie.
      */
     public Double getSuperficie () {
+        return base * altura;
         // TODO - Implementar el metodo
-        return -1.0;
+       // return -1.0;
     }
 
     public Integer getBase() {
@@ -61,6 +70,7 @@ public class Rectangulo extends FiguraGeometrica {
      * @param altura La base a configurar.
      */
     public void setBase(Integer base) {
+        this.base=base;
         // TODO - Implementar el metodo
     }
 
@@ -74,6 +84,7 @@ public class Rectangulo extends FiguraGeometrica {
      * @param altura La altura a configurar.
      */
     public void setAltura(Integer altura) {
+        this.altura=altura;
         // TODO - Implementar el metodo
     }
 
@@ -95,8 +106,9 @@ public class Rectangulo extends FiguraGeometrica {
      * @return El numero de serie a usar.
      */
     private Integer getNroSerie() {
+        return nroSerie;
         // TODO - Implementar el metodo
-        return -1;
+       // return -1;
     }
 
     /**
@@ -108,8 +120,10 @@ public class Rectangulo extends FiguraGeometrica {
      */
     @Override
     public String toString() {
+        return "Rectangulo\n ++ Altura=, ++base" + altura + base ;
         // TODO - Implementar el metodo
-        return "hola";
+        
+        //return "hola";
     }
 
 }

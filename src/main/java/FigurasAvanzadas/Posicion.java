@@ -35,7 +35,8 @@ public class Posicion implements Comparable<Posicion> {
      */
     public String toString() {
         // TODO - Implementar el metodo
-        return "hola";
+        return "Figura " + id + " " + posicion.toString();
+        //return "hola";
     }
 
     /**
