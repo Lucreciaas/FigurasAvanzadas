@@ -3,23 +3,17 @@ package FigurasAvanzadas;
 public class Posicion implements Comparable<Posicion> {
     private Integer x;
     private Integer y;
-    double posx;
-    double posy;
+    
 
     /**
      * Calcula la distancia entre la posicion y el origen (0,0).
      * @return La distancia al origen.
      */
     
-    public static double hypot​(double catm, double catM, double getPosX, double getPosY){
-       Math.hypot(catm, catM);
-       catm=getPosX;
-       catM=getPosY;
-    }
+      
     
-    
-    public Double distanciaAlOrigen (double catm, double catM, double x, double y) {
-      return (Math.hypot (catm, catM))-(Math.hypot (x, y) );
+    public Double distanciaAlOrigen () {
+       return Double.valueOf(Math.hypot(x, y));
     }
     
             
@@ -43,24 +37,11 @@ public class Posicion implements Comparable<Posicion> {
      * Devuelve la posicion como un par ordenado, sin espacios en blanco.
      * @return El par ordenado.
      */
-    public double getPosX() {
-        return posx;
-    }
     
-    public double setPosX() {
-        this.posx=posx;
-    }
-    public double getPosY() {
-        return posy;
-    }
-    
-    public double setPosY() {
-        this.posy=posy;
-    }
     
     public String toString() {
         // TODO - Implementar el metodo
-        return "Figura " + id + " " + posicion.toString();
+        return toString() + (" ++ x=" + x + ", y=" + y);
         //return "hola";
     }
 
@@ -71,7 +52,11 @@ public class Posicion implements Comparable<Posicion> {
      */
     @Override
     public int compareTo(Posicion otro) {
-        // TODO - Implementar el metodo
-        return 0;
-    }
+        int otro =getPosicion().compareTo(otro.getPosicion());
+        if (otro== 0){
+            otro = (int)Math.signum(getId().compareTo(otro.getId()));
+        }
+        return c;
+        }
 }
+
