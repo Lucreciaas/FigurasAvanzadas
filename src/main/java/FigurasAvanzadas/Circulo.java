@@ -8,6 +8,7 @@ public class Circulo extends FiguraGeometrica {
     // No se puede repetir el numero para dos triangulos
     private static Integer nroSerie = 0;
     private Integer radio;
+    private Integer id;
 
     /**
      * Constructor que recibe los valores de la base
@@ -17,16 +18,13 @@ public class Circulo extends FiguraGeometrica {
      * siendo X el numero de serie correspondiente.
      * Configurarlo con setId() de la superclase.
      */
-    public Circulo (Integer radio, Integer x, Integer y) {
-        super(x, y);
-        setRadio(radio);
+    public Circulo (Integer radio) {
+       setRadio(radio);
+       setId("Circulo" + getNroSerie());
     }
-    public void setId(String id) {
-        this.id =f.id++;
+
+    
         
-    }
-    
-    
     public Circulo(Integer diametro) {
         this.radio = diametro;
     }
@@ -60,6 +58,7 @@ public class Circulo extends FiguraGeometrica {
             this.radio = radio;
                 }
     }
+  
 
     /**
      * Compara el triangulo con cualquier otra figura geometrica
@@ -69,18 +68,13 @@ public class Circulo extends FiguraGeometrica {
      * @return El entero indicando la comparacion.
      */
     @Override
-    public int compareTo(FiguraGeometrica f) {
-   
-    if(getSuperficie() > f.getSuperficie()) return 1; 
-    if(getSuperficie() < f.getSuperficie()) return -1;
-    else {
-        return getId().compareTo(f.getId());
-        if (getId() > f.getId()) return 1; 
-        if (getId() < f.getId()) return -1; 
-        else {return 0;
-          }   
+     public int compareTo(FiguraGeometrica f) {
+        int c = getSuperficie().compareTo(f.getSuperficie());
+        if (c == 0) {
+            c = (int)Math.signum(getId().compareTo(f.getId()));
+        }
+        return c;
     }
-}
     
 
     /**
@@ -88,10 +82,9 @@ public class Circulo extends FiguraGeometrica {
      * @return El numero de serie a usar.
      */
     private Integer getNroSerie() {
-        return nroSerie++;
-        
-    }
-
+        nroSerie +=1;
+        return nroSerie;
+}
     /**
      * Devuelve lo reportado en el toString() de la superclase
      * y le agrega el radio el circulo con el formato

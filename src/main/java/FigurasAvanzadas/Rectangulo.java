@@ -8,6 +8,7 @@ public class Rectangulo extends FiguraGeometrica {
     private static Integer nroSerie = 0;
     private Integer base;
     private Integer altura;
+    private Integer id;
 
     /**
      * Constructor que utiliza el mismo valor de la base
@@ -18,17 +19,19 @@ public class Rectangulo extends FiguraGeometrica {
      * Configurarlo con setId() de la superclase.
      */
     public Rectangulo (Integer base) {
-        this.base=base;
-       // TODO - Implementar el metodo
-    }
+        setBase (base);
+        setAltura (base);
+        setId("Rectangulo" + getNroSerie());
+           // TODO - Implementar el metodo
+                }
     
-    public Rectangulo(Integer base, Integer altura, Integer x, Integer y) {
-        super x,y;
-        this.base=base;
-        this.altura=altura;
+    
+    public Rectangulo(Integer base, Integer altura) {
+        setBase (base);
+        setAltura (base);
+        setId("Rectangulo" + getNroSerie());
         // TODO - Implementar el metodo
     }
-    
     
 
     /**
@@ -45,7 +48,7 @@ public class Rectangulo extends FiguraGeometrica {
      * @return El perimetro.
      */
     public Double getPerimetro () {
-        return base*2 + altura*2;
+        return base*2.0 + altura*2.0;
         // TODO - Implementar el metodo
        // return -1.0;
     }
@@ -55,7 +58,7 @@ public class Rectangulo extends FiguraGeometrica {
      * @return La superficie.
      */
     public Double getSuperficie () {
-        return base * altura;
+        return 1.0*base * altura;
         // TODO - Implementar el metodo
        // return -1.0;
     }
@@ -84,11 +87,13 @@ public class Rectangulo extends FiguraGeometrica {
      * @param altura La altura a configurar.
      */
     public void setAltura(Integer altura) {
+        if((0>altura) && (altura<=MAX_LADO)){
         this.altura=altura;
         // TODO - Implementar el metodo
     }
-
-    /**
+    }
+        
+      /**
      * Compara el triangulo con cualquie otra figura geometrica
      * devolviendo -1, 0 o 1 segun sea menor, igual o mayor.
      * La comparacion se hace primero por superficie y luego por ID
@@ -96,16 +101,21 @@ public class Rectangulo extends FiguraGeometrica {
      * @return El entero indicando la comparacion.
      */
     @Override
-    public int compareTo(FiguraGeometrica f) {
-        // TODO - Implementar el metodo
-        return 0;
+        public int compareTo(FiguraGeometrica f) {
+        int r = getSuperficie().compareTo(f.getSuperficie());
+        if (r == 0) {
+            r = (int)Math.signum(getId().compareTo(f.getId()));
+        }
+        return r;
     }
+        // TODO - Implementar el metodo
 
     /**
      * Genera un numero unico para cada objeto creado.
      * @return El numero de serie a usar.
      */
     private Integer getNroSerie() {
+        nroSerie +=1;
         return nroSerie;
         // TODO - Implementar el metodo
        // return -1;
@@ -120,10 +130,10 @@ public class Rectangulo extends FiguraGeometrica {
      */
     @Override
     public String toString() {
-        return "Rectangulo\n ++ Altura=, ++base" + altura + base ;
-        // TODO - Implementar el metodo
-        
-        //return "hola";
+        return super.toString() + (" ++ Altura=" + x ¨,¨+ ", Base=" + y);
     }
+    
+        //return "hola";
+    
 
 }

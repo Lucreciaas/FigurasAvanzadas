@@ -2,7 +2,7 @@ package FigurasAvanzadas;
 
 public class Triangulo extends FiguraGeometrica {
     // La constante se usa para BASE y ALTURA
-    private static final Integer MAX_ALTURA = 1000;
+    private static final Integer MAX_ALTURA = 500;
     // El numero de serie del primer objeto es 1
     // No se puede repetir el numero para dos triangulos
     private static Integer nroSerie = 0;
@@ -17,10 +17,13 @@ public class Triangulo extends FiguraGeometrica {
      * siendo X el numero de serie correspondiente.
      * Configurarlo con setId() de la superclase.
      */
-    public Triangulo (Integer base) {
-             this.base=base;
+       public Triangulo (Integer base) {
+        setBase (base);
+        setAltura (base);
+        setId("Triangulo" + getNroSerie());
         // TODO - Implementar el metodo
     }
+      
 
     /**
      * Constructor que recibe los valores de la base
@@ -30,11 +33,11 @@ public class Triangulo extends FiguraGeometrica {
      * siendo X el numero de serie correspondiente.
      * Configurarlo con setId() de la superclase.
      */
-    public Triangulo (Integer base, Integer altura,Integer x, Integer y) {
-        super x,y;
-        this.base=base;
-        this.altura=altura; 
-// TODO - Implementar el metodo
+     public Triangulo(Integer base, Integer altura) {
+       setBase (base);
+        setAltura (base);
+        setId("Triangulo" + getNroSerie());
+        // TODO - Implementar el metodo
     }
 
     /**
@@ -81,7 +84,9 @@ public class Triangulo extends FiguraGeometrica {
      * @param altura La altura a configurar.
      */
     public void setAltura(Integer altura) {
-             this.altura = altura;
+        if((0>altura) && (altura<=MAX_ALTURA)){
+        this.altura=altura;
+        
        // TODO - Implementar el metodo
     }
 
@@ -93,9 +98,13 @@ public class Triangulo extends FiguraGeometrica {
      * @return El entero indicando la comparacion.
      */
     @Override
-    public int compareTo(FiguraGeometrica f) {
-        // TODO - Implementar el metodo
-        return 0;
+    
+     public int compareTo(FiguraGeometrica f) {
+        int t = getSuperficie().compareTo(f.getSuperficie());
+        if (t == 0) {
+            t = (int)Math.signum(getId().compareTo(f.getId()));
+        }
+        return t;
     }
 
     /**
@@ -103,6 +112,7 @@ public class Triangulo extends FiguraGeometrica {
      * @return El numero de serie a usar.
      */
     private Integer getNroSerie() {
+        nroSerie +=1;
         return nroSerie;
         // TODO - Implementar el metodo
         //return -1;
@@ -116,9 +126,11 @@ public class Triangulo extends FiguraGeometrica {
      * @return El texto asociado.
      */
     @Override
-    public String toString() {
-          return "Triangulo\n ++ Altura=, ++base" + altura + base ;
-        //return "hola";
+     public String toString() {
+        return super.toString() + " ++ Altura=" + altura + ", Base=" + base;
     }
+    
+        //return "hola";
+    
 
 }
